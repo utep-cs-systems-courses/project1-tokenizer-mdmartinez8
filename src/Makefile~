@@ -1,0 +1,19 @@
+#Makefile for Project 1, Tokenizer
+
+
+OBJS = history.o tokenizer.o
+
+
+CFLAGS=-g -03
+
+all: tokenizer
+
+tokenizer: $(OBJS)
+	cc -o tokenizer $(CFLAGS) $(OBJS)
+
+clean:
+	rm -f *.o tokenizer
+
+
+run: tokenizer
+	./tokenizer
