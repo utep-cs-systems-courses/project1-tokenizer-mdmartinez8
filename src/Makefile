@@ -1,21 +1,21 @@
 #Makefile for Project 1, Tokenizer
 
 
-OBJS = history.o tokenizer.o
+OBJS = uimain.o history.o tokenizer.o
 
 
 CFLAGS=-g -O3
 
-all: tokenizer
+all: tokenizer history uimain
 
 tokenizer: $(OBJS)
-	cc -o tokenizer $(CFLAGS) $(OBJS)
+	cc -o uimain $(CFLAGS) $(OBJS)
 
-$(OBJS): history.h 
+$(OBJS): history.h tokenizer.h
 
 clean:
-	rm -f *.o tokenizer
+	rm -f *.o tokenizer uimain history
 
 
-run: tokenizer
-	./tokenizer
+run: uimain
+	./uimain

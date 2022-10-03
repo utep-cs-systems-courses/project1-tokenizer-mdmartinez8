@@ -1,104 +1,80 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include "history.c"
+#include "uimain.c"
 
-
-int main()
+int space_char(char c)     //Returns True(non-zero) if c is a whitespace character
 {
-  char *buffOut = (char *)malloc(1000*sizeof(char));   //Creating buffers of size 1000
-  char *buffIn = (char *)malloc(1000*sizeof(char));
-  void printWords(char *buffIn);                       //Class that takes in buffer and prints it
-  int terminateWord(char *buffIn);                    //Class will check if want to quit program
-  /*int space_char(char c);                             //Class to check if char is space
-  int non_space_char(char c);
-  char *word_start(char *str);
-  char *word_terminator(char *word);
-  int count_words(char *str);
-  char *copy_str(char *inStr, short len);
-  char **tokenize(char* str);
-  void print_tokens(char **tokens);
-  void free_tokens(char **tokens);**/
-
-  
-  printf("Enter any text.'QUIT'To Quit\n");
-  printf("$");
-  gets(buffIn);
-  printf("Working.\n");
-  while((terminateWord(buffIn)) == 0)
+  if(c == ' ' || c == '\t')
   {
-    printWords(buffIn);
-    printf("\n$");
-    gets(buffIn);
+    return 1;
   }
   return 0;
-}
-void printWords(char *buffIn)
-{
-  //char *buffOut = (char*)malloc(1000*sizeof(char));
-  printf("Working..\n");
-  while(*buffIn != '\0')
-  {
-    putchar(*buffIn);
-    buffIn++;
-  }
-  return;
-}
-
-int terminateWord(char *buffIn)             //Returns 1 if input is terminate word
-{
-  char *tWord = "QUIT";
-
-  printf("Working...\n");
-  while(*buffIn != '\0')
-  {
-    if(*buffIn != *tWord)
-    {
-      return 0;
-    }
-    buffIn++;
-    tWord++;
-  }
-
-  return 1;
-}
-
-int space_char(char c)
-{
-
 
 }
 
 int non_space_char(char c)
 {
-
+  if (space_char(c) == 0)
+  {
+    return 1;
+  }
+  return 0;
 
 }
 
 
 char *word_start(char *str)
 {
-
-
+  while(*str != '\0')
+  {
+    if(non_space_char(str)==1)
+    {
+      return str;
+    }
+    
+    str++;
+  }
+  return 0;
 }
 
 
 char *word_terminator(char *word)
-{
-
-
+  if(word_start(word))
+  {
+    return 0;
+  }
+  while(*word != '\0')
+  {
+    word++;
+    if(word =='\0' || space_char(word) == 1)
+    {
+      return word--;
+    }
+  }
 }
 
 
 int count_words(char *str)
 {
-
-
+  int wCount = 0;
+  while(*str != '\0')
+  {
+    if(word_start(str) != 0)
+    {
+      wCount++;
+    }
+    str = word_terminator(str)++;
+  }
+  return 0;
 }
 
 
 char *copy_str(char *inStr, short len)
 {
-
+  char *copy = (char *)malloc(1000*sizeof(char));
+  while((*copy++ = *inStr++) != '\0')
+    ;
+  return copy;
 
 }
 
@@ -122,5 +98,3 @@ void free_tokens(char **tokens)
 
 
 }
-// return 0;
-//}  
