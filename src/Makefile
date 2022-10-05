@@ -4,11 +4,11 @@
 OBJS = uimain.o history.o tokenizer.o
 
 
-CFLAGS=-g -O3
+CFLAGS=-g -O3 -Wall -Wextra
 
-all: tokenizer history uimain
+all: uimain
 
-tokenizer: $(OBJS)
+uimain: $(OBJS)
 	cc -o uimain $(CFLAGS) $(OBJS)
 
 $(OBJS): history.h tokenizer.h

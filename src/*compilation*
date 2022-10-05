@@ -1,0 +1,12 @@
+-*- mode: compilation; default-directory: "~/compOrg/project1-tokenizer-mdmartinez8/src/" -*-
+Compilation started at Wed Oct  5 11:42:51
+
+make -k 
+cc -g -O3 -Wall -Wextra   -c -o uimain.o uimain.c
+uimain.c: In function ‘main’:
+uimain.c:16:9: warning: implicit declaration of function ‘terminateWord’ [-Wimplicit-function-declaration]
+   while(terminateWord(buffIn) == 0)      //Start program loop,check if user requests to terminate
+         ^~~~~~~~~~~~~
+cc -o uimain -g -O3 -Wall -Wextra uimain.o history.o tokenizer.o
+
+Compilation finished at Wed Oct  5 11:42:51

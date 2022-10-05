@@ -7,30 +7,28 @@
 
 int main()
 {
-  char *buffIn = (char *)malloc(1000*sizeof(char));
+  char *buffIn = (char *)malloc(1000*sizeof(char));    //Initial buffer for user input
 
-  printf("Enter any text. 'QUIT' To quit program.\n");
+  printf("Enter any text. 'QUIT' To quit program.\t'!1' To get history\n");
   printf("$");
-  scanf("%s", buffIn);
-
-  while(terminateWord(buffIn) == 0)
+  fgets(buffIn, 1000, stdin);
+  printf("Working Before While loop\n");
+  while(terminateWord(buffIn) == 0)      //Start program loop,check if user requests to terminate
   {
-    printWords(buffIn);
+    printf("Working In While Loop\n");
+    char **tokens;
+    tokens = malloc((count_words(buffIn)+1)*sizeof(char *));   //Allocate size for tokens
+    printf("Working after count_words\n");
+    tokens = tokenize(buffIn);      //Tokenize
+    printf("Working after tokenize\n");
+    print_tokens(tokens);
+    printf("Working after print_tokens\n");
+    free_tokens(tokens);
     printf("\n$");
-    scanf("%s", buffIn);
+    fgets(buffIn, 1000, stdin);
 
   }
   return 0;
-}
-
-void printWords(char *buffIn)
-{
-  while(*buffIn != '\0')
-  {
-    putchar(*buffIn);
-    buffIn++;
-  }
-  return;
 }
 
 int terminateWord(char *buffIn)
