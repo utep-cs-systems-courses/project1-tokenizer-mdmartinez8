@@ -5,44 +5,44 @@
 #include "history.h"
 
 
+
 int main()
 {
-  char *buffIn = (char *)malloc(1000*sizeof(char));    //Initial buffer for user input
-
-  printf("Enter any text. 'QUIT' To quit program.\t'!1' To get history\n");
+  int terminateWord(char *str);
+  char *buffIn = (char *)malloc(1000*sizeof(char *));    //Initial buffer for user input
+  size_t buffSize = 1000;
+  int n_chars;
+  
+  printf("Enter any text. 'Q' To quit program.\t'!1' To get history\n");
   printf("$");
-  fgets(buffIn, 1000, stdin);
+  n_chars = getline(&buffIn, &buffSize, stdin);
+  printf("getline transferred %d chars.  string=<%s>\n", n_chars, buffIn);
+  if (n_chars == -1) {
+    printf("Error");
+  }
+  
+  char **tokens;
   printf("Working Before While loop\n");
   while(terminateWord(buffIn) == 0)      //Start program loop,check if user requests to terminate
   {
     printf("Working In While Loop\n");
-    char **tokens;
-    tokens = malloc((count_words(buffIn)+1)*sizeof(char *));   //Allocate size for tokens
-    printf("Working after count_words\n");
     tokens = tokenize(buffIn);      //Tokenize
     printf("Working after tokenize\n");
     print_tokens(tokens);
     printf("Working after print_tokens\n");
     free_tokens(tokens);
     printf("\n$");
-    fgets(buffIn, 1000, stdin);
-
+    getline(&buffIn, &buffSize, stdin);
   }
   return 0;
 }
 
 int terminateWord(char *buffIn)
 {
-  char *tWord = "QUIT";
-
-  while(*buffIn != '\0')
+  char *tWord = "Q";
+  if(*buffIn == *tWord)
   {
-    if(*buffIn != *tWord)
-    {
-      return 0;
-    }
-    buffIn++;
-    tWord++;
+    return 1;
   }
-  return 1;
+  return 0;
 }
