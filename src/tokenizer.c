@@ -87,14 +87,14 @@ char *copy_str(char *inStr, short len)
 char **tokenize(char *str)
 {
   int wordNum = count_words(str);
-  printf("%d\n", wordNum);
+  //printf("%d\n", wordNum);
   char **tokens = (char **) malloc((wordNum+1) * sizeof(char **));
   int i;
   for (i = 0; i<wordNum; i++)
   {
     str = word_start(str);
-    int wStart, wEnd = word_start(str), word_terminator(str);
-    tokens[i] = copy_str(str, (wEnd - wStart + 1));
+    int wLen = word_terminator(str) -  word_start(str);
+    tokens[i] = copy_str(str, (wLen + 1));
     //printf("%s\n",tokens[i]);
     str = word_terminator(str);
     str++;

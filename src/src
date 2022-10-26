@@ -1,0 +1,17 @@
+  /home/student/compOrg/project1-tokenizer-mdmartinez8/src:
+  total used in directory 100 available 17033964
+  drwxr-xr-x 1 student users   222 Oct 26 11:33 .
+  drwxr-xr-x 1 student users    88 Sep 26 09:00 ..
+  -rw-r--r-- 1 student users  1130 Oct 26 11:32 history.c
+  -rw-r--r-- 1 student users   759 Sep 14 09:55 history.h
+  -rw-r--r-- 1 student users  7728 Oct 26 11:33 history.o
+D -rw-r--r-- 1 student users     0 Oct 19 11:41 make
+  -rw-r--r-- 1 student users   267 Oct  5 10:16 Makefile
+  -rw-r--r-- 1 student users   367 Sep 14 11:08 README.md
+  -rw-r--r-- 1 student users  3298 Sep 14 11:30 tester.c
+  -rw-r--r-- 1 student users  2070 Oct 26 11:26 tokenizer.c
+  -rw-r--r-- 1 student users  1375 Oct  2 22:50 tokenizer.h
+  -rw-r--r-- 1 student users 12304 Oct 26 11:33 tokenizer.o
+  -rwxr-xr-x 1 student users 31264 Oct 26 11:33 uimain
+  -rw-r--r-- 1 student users  1451 Oct 26 11:11 uimain.c
+  -rw-r--r-- 1 student users 10776 Oct 26 11:33 uimain.o
